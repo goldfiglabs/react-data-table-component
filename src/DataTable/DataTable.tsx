@@ -111,6 +111,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 		theme = defaultProps.theme,
 		customStyles = defaultProps.customStyles,
 		direction = defaultProps.direction,
+		wrapperComponent = defaultProps.wrapperComponent,
 	} = props;
 
 	// decorate columns with additional metadata required by RDT
@@ -299,6 +300,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 	const rowData = selectableRowsVisibleOnly ? calculatedRows : rows;
 	const showSelectAll = persistSelectedOnPageChange || selectableRowsNoSelectAll;
 
+	const Wrapper = wrapperComponent || TableWrapper;
 	return (
 		<ThemeProvider theme={currentTheme}>
 			{showHeader() && (
@@ -326,7 +328,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 				overflowY={overflowY}
 				{...wrapperProps}
 			>
-				<TableWrapper>
+				<Wrapper>
 					{progressPending && !persistTableHead && <ProgressWrapper>{progressComponent}</ProgressWrapper>}
 
 					<Table disabled={disabled} className="rdt_Table" role="table">
@@ -430,7 +432,7 @@ function DataTable<T extends RowRecord>(props: TableProps<T>): JSX.Element {
 							</TableBody>
 						)}
 					</Table>
-				</TableWrapper>
+				</Wrapper>
 			</ResponsiveWrapper>
 
 			{enabledPagination && (

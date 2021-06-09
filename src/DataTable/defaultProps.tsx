@@ -94,4 +94,5 @@ export const defaultProps = {
 	onRowExpandToggled: noop,
 	onSelectedRowsChange: noop,
 	onSort: noop,
+	wrapperComponent: null,
 };

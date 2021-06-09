@@ -1,5 +1,6 @@
 import { Alignment, Direction, Media } from './constants';
 import { CSSObject } from 'styled-components';
+import React from 'react';
 
 export type ChangePage = (page: number, totalRows: number) => void;
 export type ChangeRowsPerPage = (currentRowsPerPage: number, currentPage: number) => void;
@@ -100,6 +101,8 @@ export type TableProps<T = RowRecord> = {
 	 *  Shows and displays a header with a title
 	 *  */
 	title?: string | React.ReactNode;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	wrapperComponent?: React.ComponentType<any>;
 };
 
 export interface TableColumnBase {
