@@ -101,8 +101,7 @@ export type TableProps<T = RowRecord> = {
 	 *  Shows and displays a header with a title
 	 *  */
 	title?: string | React.ReactNode;
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	wrapperComponent?: React.ComponentType<any>;
+	wrapperRef?: React.Ref<HTMLDivElement>;
 };
 
 export interface TableColumnBase {
